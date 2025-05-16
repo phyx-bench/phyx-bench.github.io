@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="A benchmark for evaluating MLLM's physical reasoning capability.">
+  <meta name="keywords" content="Multimodal Code Generation, Large Multimodal Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhyX: Does Your Model Have the "Wits" for Physical Reasoning?</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bootstrap4.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bootstrap4.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script>
+
+  <script src="./static/js/benmark_table.js" type="module"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <!-- <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script> -->
+</head>
+
+<body>
+
+  <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">PhyX</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="./">Hui Shen</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://github.com/yc1999">Taiqiang Wu</a><sup>2*</sup>,</span>
+              <span class="author-block">
+                <a href="./">Yaxin Liu</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.briancyan.site/">Bo Shui</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=iwR2MoQAAAAJ&hl=zh-CN">Junjie
+                  Wang</a><sup>3*</sup>,</span>
+              <span class="author-block">
+                <a href="./">Mohan Jing</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="./">Linran Xu</a><sup>1</sup>,</span>
+              <br>
+              <span class="author-block">
+                <a href="https://zhuxinyu.top">Xinyu Zhu</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=thceJNUAAAAJ&view_op=list_works">Siheng
+                  Li</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=TgQwykIAAAAJ&hl=zh-CN">Yuxiang
+                  Zhang</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="./">Gongye Liu</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="./">Xiaomei Nie</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://jcyk.github.io/">Deng Cai</a><sup>4</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=4gH3sxsAAAAJ&hl=zh-CN">Yujiu
+                  Yang</a><sup>1†</sup>,</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Tsinghua University,</span>
+              <span class="author-block"><sup>2</sup>The Chinese University of Hong Kong,</span>
+              <span class="author-block"><sup>3</sup>Waseda University,</span>
+              <span class="author-block"><sup>4</sup>Tencent AI Lab</span>
+            </div>
+
+            <div class="is-size-6 publication-authors">
+              <span class="author-block">*Equal contribution.</span>
+              <span class="author-block">†Corresponding author.</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2406.09961" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2406.09961" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/ChartMimic/ChartMimic"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/ChartMimic/ChartMimic"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+        <img src="./static/images/overview.png" alt="Teaser image." />
+        <h2 class="subtitle has-text-centered">
+          <!-- <span class="dnerf">Nerfies</span> -->
+          The real-world example. LMMs assist scientists and researchers in understanding, interpreting and creating
+          charts during the reading and writing of academic papers.
+          These models serve as assistants that enhance the comprehension and presentation of data in scholarly
+          communications.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce a new benchmark, <b>ChartMimic</b>, aimed at assessing <b>the visually-grounded code
+                generation
+                capabilities of large multimodal models (LMMs)</b>. ChartMimic utilizes information-intensive visual
+              charts
+              and textual instructions as inputs, requiring LMMs to generate the corresponding code for chart rendering.
+            </p>
+            <p>
+              ChartMimic includes <b>1,000 human-curated (figure, instruction, code) triplets</b>, which represent the
+              authentic chart use cases found in scientific papers across various domains (e.g., Physics, Computer
+              Science, Economics, etc). These charts span 18 regular types and 4 advanced types, diversifying into 191
+              subcategories.
+            </p>
+            <p>
+              Furthermore, we propose <b>multi-level evaluation metrics</b> to provide an automatic and thorough
+              assessment of
+              the output code and the rendered charts. Unlike existing code generation benchmarks, ChartMimic places
+              emphasis on evaluating LMMs' capacity to harmonize a blend of cognitive capabilities, encompassing
+              <b>visual
+                understanding, code generation, and cross-modal reasoning</b>.
+            </p>
+            <p>
+              The evaluation of 3 proprietary models and 11 open-weight models highlights the substantial challenges
+              posed by ChartMimic. Even the advanced GPT-4V, Claude-3-opus only achieve an average score of 73.2 and
+              53.7, respectively, indicating significant room for improvement.
+              We anticipate that ChartMimic will inspire the development of LMMs, advancing the pursuit of artificial
+              general intelligence.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!--/ Framework. -->
+      <div class="hero-body">
+        <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+        <img src="./static/images/framework.png" alt="Framework." />
+        <h2 class="subtitle has-text-centered">
+          <!-- <span class="dnerf">Nerfies</span> -->
+          The pipeline of ChartMimic. We provide 1,000 human-curated (figure, instruction, code) triplets. We use
+          ChartMimic to evaluate LMMs’ proficiency in the multimodal chart-to-code generation, resulting in both
+          high-level and low-level evaluation results.
+        </h2>
+      </div>
+      <!--/ Framework. -->
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+
+
+
+        <h2 class="title is-3">Leaderboard</h2>
+        We conduct examination of 14 LMMs on ChartMimic, including 3 proprietary models and 11 open-weight
+        models.
+
+        <br>
+        <br>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="main-results-tab" data-bs-toggle="tab"
+              data-bs-target="#benchmark-table-content" type="button" role="tab" aria-controls="main-results-tab"
+              aria-selected="true">Direct Mimic</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="eurus-code-table-tab" data-bs-toggle="tab"
+              data-bs-target="#eurus-code-table-content" type="button" role="tab" aria-controls="eurus-code-table-tab"
+              aria-selected="false">Customized Mimic</button>
+          </li>
+          <!-- <li class="nav-item" role="presentation">
+            <button class="nav-link" id="eurus-math-table-tab" data-bs-toggle="tab"
+              data-bs-target="#eurus-math-table-content" type="button" role="tab" aria-controls="eurus-math-table-tab"
+              aria-selected="false">
+              Math (Eurus subset)</button>
+          </li> -->
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="benchmark-table-content" role="tabpanel"
+            aria-labelledby="benchmark-table-content">
+
+            <p class="mt-2 px-2">
+              The ChartMimic leaderboard with <b>Direct Mimic</b> task. We also include
+              the
+              code
+              execution success rate (Exec. Rate) and model size (Params).
+            </p>
+
+            <div id="benchmark-table"></div>
+          </div>
+          <div class="tab-pane fade" id="eurus-code-table-content" role="tabpanel"
+            aria-labelledby="eurus-code-table-content">
+
+            <p class="mt-2 px-2">
+              The ChartMimic leaderboard with <b>Customized Mimic</b> task. We also include
+              the
+              code execution success rate (Exec. Rate) and model size (Params).
+            </p>
+
+
+            <div id="eurus-code-table"></div>
+          </div>
+          <!-- <div class="tab-pane fade" id="eurus-math-table-content" role="tabpanel"
+            aria-labelledby="eurus-math-table-content">
+            <p class="mt-2 px-2">
+              This math subset follows the <a href="https://arxiv.org/abs/2404.02078">Eurus
+                paper</a> and contains TheoremQA, MATH and MMLU.
+            </p>
+
+
+            <div id="eurus-math-table"></div>
+          </div> -->
+        </div>
+        <br>
+        <h2 class="subtitle">
+          Please refer to our <a href="https://github.com/ChartMimic/ChartMimic">GitHub repo</a> to add your
+          model to the leaderboard.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="Data">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Data</h2>
+      <p>You can directly download our data from <a href="https://github.com/ChartMimic/ChartMimic">Huggingface
+          datasets</a>. For guidance on how to access and utilize the data, please consult our instructions on <a
+          href="https://huggingface.co/datasets/ChartMimic/ChartMimic">Github</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{
+      shi2024chartmimic,
+      title={ChartMimic: Evaluating LMM’s Cross-Modal Reasoning Capability via Chart-to-Code Generation},
+      author={Chufan Shi and Cheng Yang and Yaxin Liu and Bo Shui and Junjie Wang and Mohan Jing and Linran Xu and Xinyu Zhu and Siheng Li and Yuxiang Zhang and Gongye Liu and Xiaomei Nie and Deng Cai and Yujiu Yang},
+      year={2024},
+      journal={arXiv preprint arXiv:2406.09961},
+}</code>
+  </pre>
+    </div>
+  </section>
+
+  <section class="section" id="Contact">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Contact Us</h2>
+      <p>If you have any inquiries about ChartMimic, feel free to reach out to us at chartmimic@gmail.com, {scf22, yangc21}@mails.tsinghua.edu.cn or raise an
+        issue on Github.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="content is-small">
+          This website templated is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a> and
+          <a href="https://xwang.dev/mint-bench/">MINT</a>.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
