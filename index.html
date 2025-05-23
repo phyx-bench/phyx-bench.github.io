@@ -55,6 +55,7 @@
   <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script>
 
   <script src="./static/js/benmark_table.js" type="module"></script>
+  <script src="./static/js/index.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -347,6 +348,72 @@
       <p>You can directly download our data from <a href="https://huggingface.co/datasets/Cloudriver/PhyX">Huggingface
           datasets</a>. For guidance on how to access and utilize the data, please consult our instructions on <a
           href="https://github.com/NastyMarcus/PhyX">Github</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-------------------------------------------------------------------- LEADERBOARD SECTION -------------------------------------------------------------------->
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+          <h2 class="title is-3" id="leaderboard">Leaderboard</h2>
+          <div class="content has-text-justified">
+            <p>
+              We evaluate various models including LLMs and LMMs.
+              In each type, we consider both closed- and open-source models.
+              Our evaluation is conducted under a zero-shot setting to assess the capability of models to generate accurate answers without fine-tuning or few-shot demonstrations on our benchmark.
+            </p>
+          </div>
+          <br>
+          <div class="model-labels-container">
+            <span class="leaderboard-label human_expert">Human Expert</span>
+            <span class="leaderboard-label open_source">Open-Source</span>
+            <span class="leaderboard-label proprietary">Proprietary</span>
+          </div>
+          <br>
+          <div class="content has-text-centered">
+            <p>
+              Click on MMMU-Pro, MMMU (Val) or MMMU (Test) to expand detailed results.
+            </p>
+          </div>
+          <div class="leaderboard-container">
+            <div class="table-wrapper">
+              <table id="mmmu-table">
+                <thead>
+                  <tr>
+                    <th colspan="3" class="reset-cell clickable" style="text-align: center;">Reset</th>
+                    <th class="pro-details-cell clickable" colspan="1">PhyX(OE)</th>
+                    <th class="val-details-cell clickable" colspan="1">PhyX(MC)</th>
+                    <th class="test-details-cell clickable" colspan="1">PhyX(domain)</th>
+                  </tr>
+                  <tr>
+                    <th class="sortable clickable" data-sort="string">Name</th>
+                    <th class="clickable" data-sort="string">Size</th>
+                    <th class="sortable clickable" data-sort="date">Date</th>
+                    <th class="sortable clickable pro-overall" data-sort="number">Text-DeRedundancy</th>
+                    <th class="hidden pro-details sortable clickable" data-sort="number">Full-Text</th>
+                    <th class="hidden pro-details sortable clickable" data-sort="number">Text-Minimal</th>
+                    <th class="sortable clickable val-overall" data-sort="number">Text-DeRedundancy</th>
+                    <th class="hidden val-details sortable clickable" data-sort="number">Full-Text</th>
+                    <th class="hidden val-details sortable clickable" data-sort="number">Text-Minimal</th>
+                    <th class="sortable clickable test-overall" data-sort="number">Overall</th>
+                    <th class="hidden test-details sortable clickable" data-sort="number">Mechanics</th>
+                    <th class="hidden test-details sortable clickable" data-sort="number">Electro-magnetism</th>
+                    <th class="hidden test-details sortable clickable" data-sort="number">Thermo-dynamics</th>
+                    <th class="hidden test-details sortable clickable" data-sort="number">Waves & Acoustics </th>
+                    <th class="hidden test-details sortable clickable" data-sort="number">Optics</th>
+                    <th class="hidden test-details sortable clickable" data-sort="number">Modern Physics</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Table body will be populated dynamically -->
+                </tbody>
+              </table>
+              <p class="test-desc"> Overall results of different models on the MMMU leaderboard. The best-performing model in each category is <b>in-bold</b>, and the second best is <u>underlined</u>. *: results provided by the authors.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

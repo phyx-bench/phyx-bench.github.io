@@ -1,0 +1,560 @@
+{
+  "leaderboardData": [
+    {
+      "info": {
+        "name": "Random Choice",
+        "size": "-",
+        "date": "2025-05-14",
+        "type": "open_source"
+      },
+      "pro": {
+        "overall": "-",
+        "vision": "-",
+        "original": "-"
+      },
+      "validation": {
+        "overall": "25",
+        "artDesign": "25",
+        "business": "25"
+      },
+      "test": {
+        "overall": "-",
+        "artDesign": "-",
+        "business": "-",
+        "science": "-",
+        "healthMedicine": "-",
+        "humanSocialSci": "-",
+        "techEng": "-"
+      }
+    },
+    {
+      "info": {
+        "name": "Human Expert (Worst)",
+        "size": "-",
+        "date": "2025-05-14",
+        "type": "human_expert"
+      },
+      "pro": {
+        "overall": "75.6",
+        "vision": "-",
+        "original": "-"
+      },
+      "validation": {
+        "overall": "-",
+        "artDesign": "-",
+        "business": "-"
+      },
+      "test": {
+        "overall": "-",
+        "artDesign": "-",
+        "business": "-",
+        "science": "-",
+        "healthMedicine": "-",
+        "humanSocialSci": "-",
+        "techEng": "-"
+      }
+    },
+    {
+      "info": {
+        "name": "Human Expert (Medium)",
+        "size": "-",
+        "date": "2025-05-14",
+        "type": "human_expert"
+      },
+      "pro": {
+        "overall": "77.8",
+        "vision": "-",
+        "original": "-"
+      },
+      "validation": {
+        "overall": "-",
+        "artDesign": "-",
+        "business": "-"
+      },
+      "test": {
+        "overall": "-",
+        "artDesign": "-",
+        "business": "-",
+        "science": "-",
+        "healthMedicine": "-",
+        "humanSocialSci": "-",
+        "techEng": "-"
+      }
+    },
+    {
+      "info": {
+        "name": "Human Expert (Best)",
+        "size": "-",
+        "date": "2025-05-14",
+        "type": "human_expert"
+      },
+      "pro": {
+        "overall": "78.9",
+        "vision": "-",
+        "original": "-"
+      },
+      "validation": {
+        "overall": "-",
+        "artDesign": "-",
+        "business": "-"
+      },
+      "test": {
+        "overall": "-",
+        "artDesign": "-",
+        "business": "-",
+        "science": "-",
+        "healthMedicine": "-",
+        "humanSocialSci": "-",
+        "techEng": "-"
+      }
+    },
+    {
+      "info": {
+        "name": "Claude3.7-Sonnet",
+        "size": "-",
+        "date": "2025-02-25",
+        "type": "proprietary",
+        "link": "https://www.anthropic.com/news/claude-3-7-sonnet"
+      },
+      "pro": {
+        "overall": "42.2",
+        "vision": "44.4",
+        "original": "17.2"
+      },
+      "validation": {
+        "overall": "64.5",
+        "artDesign": "65.8",
+        "business": "41.6"
+      },
+      "test": {
+        "overall": "42.2",
+        "artDesign": "58.2",
+        "business": "36.7",
+        "science": "31.5",
+        "healthMedicine": "46.7",
+        "humanSocialSci": "44.6",
+        "techEng": "35.2"
+      }
+    },
+    {
+      "info": {
+        "name": "Claude3.5-Sonnet",
+        "size": "-",
+        "date": "2024-06-21",
+        "type": "proprietary",
+        "link": "https://www.anthropic.com/news/claude-3-5-sonnet"
+      },
+      "pro": {
+        "overall": "39.0",
+        "vision": "40.2",
+        "original": "17.0"
+      },
+      "validation": {
+        "overall": "63.5",
+        "artDesign": "62.6",
+        "business": "43.5"
+      },
+      "test": {
+        "overall": "39.0",
+        "artDesign": "53.5",
+        "business": "27.8",
+        "science": "33.3",
+        "healthMedicine": "49.7",
+        "humanSocialSci": "35.5",
+        "techEng": "3.9"
+      }
+    },
+    {
+      "info": {
+        "name": "Claude3.5-Haiku",
+        "size": "-",
+        "date": "2024-10-22",
+        "type": "proprietary",
+        "link": "https://www.anthropic.com/claude/haiku"
+      },
+      "pro": {
+        "overall": "13.6",
+        "vision": "7.9",
+        "original": "5.5"
+      },
+      "validation": {
+        "overall": "37.5",
+        "artDesign": "37.0",
+        "business": "31.7"
+      },
+      "test": {
+        "overall": "13.6",
+        "artDesign": "18.8",
+        "business": "8.9",
+        "science": "11.5",
+        "healthMedicine": "18.8",
+        "humanSocialSci": "12.0",
+        "techEng": "11.5"
+      }
+    },
+    {
+      "info": {
+        "name": "GPT-o4-mini ",
+        "size": "-",
+        "date": "2025-04-16",
+        "type": "proprietary",
+        "link": "https://openai.com/index/introducing-o3-and-o4-mini/"
+      },
+      "pro": {
+        "overall": "45.8",
+        "vision": "49.0",
+        "original": "24.1"
+      },
+      "validation": {
+        "overall": "86.9",
+        "artDesign": "87.9",
+        "business": "62.6"
+      },
+      "test": {
+        "overall": "45.8",
+        "artDesign": "52.3",
+        "business": "43.2",
+        "science": "41.8",
+        "healthMedicine": "52.7",
+        "humanSocialSci": "44.0",
+        "techEng": "40.6"
+      }
+    },
+    {
+      "info": {
+        "name": "GPT-4o",
+        "size": "-",
+        "date": "2014-11-20",
+        "type": "proprietary",
+        "link": "https://openai.com/index/hello-gpt-4o/"
+      },
+      "pro": {
+        "overall": "32.5",
+        "vision": "33.9",
+        "original": "14.3"
+      },
+      "validation": {
+        "overall": "57.6",
+        "artDesign": "61.0",
+        "business": "43.8"
+      },
+      "test": {
+        "overall": "32.5",
+        "artDesign": "45.9",
+        "business": "24.3",
+        "science": "26.1",
+        "healthMedicine": "53.9",
+        "humanSocialSci": "23.5",
+        "techEng": "21.2"
+      }
+    },
+    {
+      "info": {
+        "name": "InternVL3-78B",
+        "size": "78B",
+        "date": "2025-04-15",
+        "type": "open_source",
+        "link": "https://huggingface.co/OpenGVLab/InternVL3-78B"
+      },
+      "pro": {
+        "overall": "33.1",
+        "vision": "35.9",
+        "original": "14.8"
+      },
+      "validation": {
+        "overall": "46.9",
+        "artDesign": "45.6",
+        "business": "40.5"
+      },
+      "test": {
+        "overall": "33.1",
+        "artDesign": "48.8",
+        "business": "27.2",
+        "science": "25.5",
+        "healthMedicine": "43.0",
+        "humanSocialSci": "28.9",
+        "techEng": "24.8"
+      }
+    },
+    {
+      "info": {
+        "name": "Yi-VL-34B",
+        "size": "34B",
+        "date": "2024-05-11",
+        "type": "open_source",
+        "link": "https://huggingface.co/01-ai/Yi-VL-34B"
+      },
+      "pro": {
+        "overall": "3.4",
+        "vision": "3.5",
+        "original": "1.9"
+      },
+      "validation": {
+        "overall": "34.1",
+        "artDesign": "34.8",
+        "business": "34.1"
+      },
+      "test": {
+        "overall": "3.4",
+        "artDesign": "1.8",
+        "business": "3.5",
+        "science": "4.8",
+        "healthMedicine": "2.4",
+        "humanSocialSci": "4.2",
+        "techEng": "3.6"
+      }
+    },
+    {
+      "info": {
+        "name": "InternVL3-14B",
+        "size": "14B",
+        "date": "2025-04-15",
+        "type": "open_source",
+        "link": "https://huggingface.co/OpenGVLab/InternVL3-14B"
+      },
+      "pro": {
+        "overall": "7.9",
+        "vision": "9.0",
+        "original": "5.1"
+      },
+      "validation": {
+        "overall": "47.5",
+        "artDesign": "46.9",
+        "business": "45.9"
+      },
+      "test": {
+        "overall": "7.9",
+        "artDesign": "12.4",
+        "business": "8.9",
+        "science": "4.2",
+        "healthMedicine": "8.5",
+        "humanSocialSci": "4.8",
+        "techEng": "8.5"
+      }
+    },
+    {
+      "info": {
+        "name": "InternVL3-8B",
+        "size": "8B",
+        "date": "2025-04-15",
+        "type": "open_source",
+        "link": "https://huggingface.co/OpenGVLab/InternVL3-8B"
+      },
+      "pro": {
+        "overall": "6.5",
+        "vision": "6.3",
+        "original": "4.6"
+      },
+      "validation": {
+        "overall": "44.9",
+        "artDesign": "45.5",
+        "business": "44.0"
+      },
+      "test": {
+        "overall": "6.5",
+        "artDesign": "10.6",
+        "business": "6.5",
+        "science": "3.6",
+        "healthMedicine": "4.9",
+        "humanSocialSci": "6.6",
+        "techEng": "6.7"
+      }
+    },
+    {
+      "info": {
+        "name": "MiniCPM-o-8B",
+        "size": "8B",
+        "date": "2025-01-16",
+        "type": "open_source",
+        "link": "https://github.com/OpenBMB/MiniCPM-o"
+      },
+      "pro": {
+        "overall": "7.2",
+        "vision": "7.1",
+        "original": "3.2"
+      },
+      "validation": {
+        "overall": "31.6",
+        "artDesign": "31.8",
+        "business": "34.2"
+      },
+      "test": {
+        "overall": "7.2",
+        "artDesign": "11.8",
+        "business": "6.5",
+        "science": "6.1",
+        "healthMedicine": "7.3",
+        "humanSocialSci": "6.0",
+        "techEng": "5.5"
+      }
+    },
+    {
+      "info": {
+        "name": "LLaVA-OneVision-7B",
+        "size": "7B",
+        "date": "2024-10-26",
+        "type": "open_source",
+        "link": "https://llava-vl.github.io/blog/2024-08-05-llava-onevision/"
+      },
+      "pro": {
+        "overall": "5.7",
+        "vision": "7.2",
+        "original": "2.7"
+      },
+      "validation": {
+        "overall": "37.3",
+        "artDesign": "37.7",
+        "business": "38.0"
+      },
+      "test": {
+        "overall": "5.7",
+        "artDesign": "10.6",
+        "business": "4.1",
+        "science": "6.1",
+        "healthMedicine": "7.3",
+        "humanSocialSci": "3.0",
+        "techEng": "3.0"
+      }
+    },
+    {
+      "info": {
+        "name": "DeepSeek-VL2-4.5B",
+        "size": "4.5B",
+        "date": "2024-12-14",
+        "type": "open_source",
+        "link": "https://github.com/deepseek-ai/DeepSeek-VL2?tab=readme-ov-file"
+      },
+      "pro": {
+        "overall": "10.2",
+        "vision": "11.4",
+        "original": "4.7"
+      },
+      "validation": {
+        "overall": "27.8",
+        "artDesign": "28.2",
+        "business": "27.3"
+      },
+      "test": {
+        "overall": "10.2",
+        "artDesign": "16.5",
+        "business": "7.1",
+        "science": "10.3",
+        "healthMedicine": "13.3",
+        "humanSocialSci": "9.0",
+        "techEng": "4.8"
+      }
+    },
+    {
+      "info": {
+        "name": "Kimi-VL-A3B-Instruct-2.8B ",
+        "size": "16B",
+        "date": "-",
+        "type": "open_source",
+        "link": "https://github.com/MoonshotAI/Kimi-VL"
+      },
+      "pro": {
+        "overall": "15.4",
+        "vision": "15.6",
+        "original": "8.1"
+      },
+      "validation": {
+        "overall": "38.7",
+        "artDesign": "37.1",
+        "business": "39.3"
+      },
+      "test": {
+        "overall": "15.4",
+        "artDesign": "20.6",
+        "business": "10.1",
+        "science": "13.3",
+        "healthMedicine": "20.0",
+        "humanSocialSci": "16.2",
+        "techEng": "12.1"
+      }
+    },
+    {
+      "info": {
+        "name": "DeepSeek-R1",
+        "size": "-",
+        "date": "2025-01-20",
+        "type": "proprietary",
+        "link": "https://github.com/deepseek-ai/DeepSeek-R1"
+      },
+      "pro": {
+        "overall": "51.2",
+        "vision": "51.8",
+        "original": "22.2"
+      },
+      "validation": {
+        "overall": "62.9",
+        "artDesign": "63.1",
+        "business": "43.6"
+      },
+      "test": {
+        "overall": "51.2",
+        "artDesign": "71.8",
+        "business": "53.2",
+        "science": "41.8",
+        "healthMedicine": "53.9",
+        "humanSocialSci": "39.8",
+        "techEng": "46.1"
+      }
+    },
+    {
+      "info": {
+        "name": "DeepSeek-V3",
+        "size": "-",
+        "date": "2024-12-26",
+        "type": "proprietary",
+        "link": "https://github.com/deepseek-ai/DeepSeek-V3"
+      },
+      "pro": {
+        "overall": "36.3",
+        "vision": "40.7",
+        "original": "16.2"
+      },
+      "validation": {
+        "overall": "67.5",
+        "artDesign": "70.8",
+        "business": "49.9"
+      },
+      "test": {
+        "overall": "36.3",
+        "artDesign": "52.9",
+        "business": "39.6",
+        "science": "28.5",
+        "healthMedicine": "36.4",
+        "humanSocialSci": "28.9",
+        "techEng": "30.9"
+      }
+    },
+    {
+      "info": {
+        "name": "GPT-o3-mini",
+        "size": "-",
+        "date": "2025-04-16",
+        "type": "proprietary",
+        "link": "https://openai.com/index/introducing-o3-and-o4-mini/"
+      },
+      "pro": {
+        "overall": "31.5",
+        "vision": "36.9",
+        "original": "14.3"
+      },
+      "validation": {
+        "overall": "76.9",
+        "artDesign": "78.5",
+        "business": "56.2"
+      },
+      "test": {
+        "overall": "31.5",
+        "artDesign": "41.8",
+        "business": "24.9",
+        "science": "23.6",
+        "healthMedicine": "32.1",
+        "humanSocialSci": "33.7",
+        "techEng": "32.7"
+      }
+    }
+  ]
+} 

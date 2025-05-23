@@ -19,81 +19,72 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadTableData() {
-      console.log('Starting to load table data...');
-      fetch('./leaderboard_data.json')
-        .then(response => {
-          console.log('Response status:', response.status);
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Data loaded successfully:', data);
-          const tbody = document.querySelector('#mmmu-table tbody');
+  console.log('Starting to load table data...');
+  fetch('./leaderboard_data.json')
+    .then(response => {
+      console.log('Response status:', response.status);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Data loaded successfully:', data);
+      const tbody = document.querySelector('#mmmu-table tbody');
 
-          // Prepare data for styling
-          const proScores = prepareScoresForStyling(data.leaderboardData, 'pro');
-          const valScores = prepareScoresForStyling(data.leaderboardData, 'validation');
-          const testScores = prepareScoresForStyling(data.leaderboardData, 'test');
+      // Prepare data for styling
+      const proScores = prepareScoresForStyling(data.leaderboardData, 'pro');
+      const valScores = prepareScoresForStyling(data.leaderboardData, 'validation');
+      const testScores = prepareScoresForStyling(data.leaderboardData, 'test');
 
-          data.leaderboardData.forEach((row, index) => {
-            const tr = document.createElement('tr');
-            tr.classList.add(row.info.type);
-            const nameCell = row.info.link && row.info.link.trim() !== '' ?
-              `<a href="${row.info.link}" target="_blank"><b>${row.info.name}</b></a>` :
-              `<b>${row.info.name}</b>`;
-            const safeGet = (obj, path, defaultValue = '-') => {
-              return path.split('.').reduce((acc, part) => acc && acc[part], obj) || defaultValue;
-            };
-
-            // Helper function to format the overall value
-            const formatOverallValue = (value, source) => {
-              // Adjust space in front of asterisk to align values
-              const adjustedValue = source === 'author' ? `&nbsp;${value || '-'}*` : `${value || '-'}`;
-              return adjustedValue;
-            };
-
-            const proOverall = formatOverallValue(applyStyle(safeGet(row, 'pro.overall'), proScores.overall[index]), safeGet(row, 'pro.source'));
-            const valOverall = formatOverallValue(applyStyle(safeGet(row, 'validation.overall'), valScores.overall[index]), safeGet(row, 'validation.source'));
-            const testOverall = formatOverallValue(applyStyle(safeGet(row, 'test.overall'), testScores.overall[index]), safeGet(row, 'test.source'));
-
-            tr.innerHTML = `
-              <td>${nameCell}</td>
-              <td>${row.info.size}</td>
-              <td>${row.info.date}</td>
-              <td class="pro-overall">${proOverall}</td>
-              <td class="hidden pro-details">${applyStyle(safeGet(row, 'pro.vision'), proScores.vision[index])}</td>
-              <td class="hidden pro-details">${applyStyle(safeGet(row, 'pro.original'), proScores.original[index])}</td>
-              <td class="val-overall">${valOverall}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.artDesign'), valScores.artDesign[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.business'), valScores.business[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.science'), valScores.science[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.healthMedicine'), valScores.healthMedicine[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.humanSocialSci'), valScores.humanSocialSci[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.techEng'), valScores.techEng[index])}</td>
-              <td class="test-overall">${testOverall}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.artDesign'), testScores.artDesign[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.business'), testScores.business[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.science'), testScores.science[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.healthMedicine'), testScores.healthMedicine[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.humanSocialSci'), testScores.humanSocialSci[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.techEng'), testScores.techEng[index])}</td>
-            `;
-            tbody.appendChild(tr);
-          });
-          setTimeout(adjustNameColumnWidth, 0);
-          initializeSorting();
-        })
-        .catch(error => {
-          console.error('Error loading table data:', error);
-          document.querySelector('#mmmu-table tbody').innerHTML = `
-            <tr>
-                <td colspan="21"> Error loading data: ${error.message}<br> Please ensure you're accessing this page through a web server (http://localhost:8000) and not directly from the file system. </td>
-            </tr>
-          `;
-        });
-  }
+      data.leaderboardData.forEach((row, index) => {
+        const tr = document.createElement('tr');
+        tr.classList.add(row.info.type);
+        const nameCell = row.info.link && row.info.link.trim() !== '' ?
+          `<a href="${row.info.link}" target="_blank"><b>${row.info.name}</b></a>` :
+          `<b>${row.info.name}</b>`;
+        const safeGet = (obj, path, defaultValue = '-') => {
+          return path.split('.').reduce((acc, part) => acc && acc[part], obj) || defaultValue;
+        };
+        const formatOverallValue = (value, source) => {
+          const adjustedValue = source === 'author' ? `&nbsp;${value || '-'}*` : `${value || '-'}`;
+          return adjustedValue;
+        };
+        const proOverall = formatOverallValue(applyStyle(safeGet(row, 'pro.overall'), proScores.overall[index]), safeGet(row, 'pro.source'));
+        const valOverall = formatOverallValue(applyStyle(safeGet(row, 'validation.overall'), valScores.overall[index]), safeGet(row, 'validation.source'));
+        const testOverall = formatOverallValue(applyStyle(safeGet(row, 'test.overall'), testScores.overall[index]), safeGet(row, 'test.source'));
+        tr.innerHTML = `
+          <td>${nameCell}</td>
+          <td>${row.info.size || '-'}</td>
+          <td>${row.info.date || '-'}</td>
+          <td class="pro-overall">${proOverall}</td>
+          <td class="hidden pro-details">${applyStyle(safeGet(row, 'pro.vision'), proScores.vision[index])}</td>
+          <td class="hidden pro-details">${applyStyle(safeGet(row, 'pro.original'), proScores.original[index])}</td>
+          <td class="val-overall">${valOverall}</td>
+          <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.artDesign'), valScores.artDesign[index])}</td>
+          <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.business'), valScores.business[index])}</td>
+          <td class="test-overall">${testOverall}</td>
+          <td class="hidden test-details">${applyStyle(safeGet(row, 'test.artDesign'), testScores.artDesign[index])}</td>
+          <td class="hidden test-details">${applyStyle(safeGet(row, 'test.business'), testScores.business[index])}</td>
+          <td class="hidden test-details">${applyStyle(safeGet(row, 'test.science'), testScores.science[index])}</td>
+          <td class="hidden test-details">${applyStyle(safeGet(row, 'test.healthMedicine'), testScores.healthMedicine[index])}</td>
+          <td class="hidden test-details">${applyStyle(safeGet(row, 'test.humanSocialSci'), testScores.humanSocialSci[index])}</td>
+          <td class="hidden test-details">${applyStyle(safeGet(row, 'test.techEng'), testScores.techEng[index])}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+      setTimeout(adjustNameColumnWidth, 0);
+      initializeSorting();
+    })
+    .catch(error => {
+      console.error('Error loading table data:', error);
+      document.querySelector('#mmmu-table tbody').innerHTML = `
+        <tr>
+            <td colspan="21"> Error loading data: ${error.message}<br> Please ensure you're accessing this page through a web server (http://localhost:8000) and not directly from the file system. </td>
+        </tr>
+      `;
+    });
+}
 
 function setupEventListeners() {
   document.querySelector('.reset-cell').addEventListener('click', function() {
@@ -126,7 +117,7 @@ function toggleDetails(section) {
     var headerCell = document.querySelector('.' + sec + '-details-cell');
     if (sec === section) {
       detailCells.forEach(cell => cell.classList.toggle('hidden'));
-      headerCell.setAttribute('colspan', headerCell.getAttribute('colspan') === '1' ? (sec === 'pro' ? '3' : '7') : '1');
+      headerCell.setAttribute('colspan', headerCell.getAttribute('colspan') === '1' ? (sec === 'test' ? '7' : '3') : '1');
     } else {
       detailCells.forEach(cell => cell.classList.add('hidden'));
       overallCells.forEach(cell => cell.classList.remove('hidden'));
