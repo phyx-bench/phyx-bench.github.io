@@ -217,10 +217,10 @@
                 <span class="link-block">
                   <a href="https://huggingface.co/datasets/Cloudriver/PhyX"
                     class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
+                    <!-- <span class="icon">
                       <i class="far fa-images"></i>
-                    </span>
-                    <span>Dataset</span>
+                    </span> -->
+                    <span>🤗 Dataset</span>
                   </a>
               </div>
 
@@ -241,10 +241,7 @@
         <img src="./static/images/overview.png" alt="Teaser image." />
         <h2 class="subtitle has-text-centered">
           <!-- <span class="dnerf">Nerfies</span> -->
-          The real-world example. LMMs assist scientists and researchers in understanding, interpreting and creating
-          charts during the reading and writing of academic papers.
-          These models serve as assistants that enhance the comprehension and presentation of data in scholarly
-          communications.
+          Data examples of the PhyX dataset. The dataset contains 3,000 human-annotated physics problems with visual context.
         </h2>
       </div>
     </div>
@@ -256,132 +253,80 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
+          <h2 class="title is-3">Introduction</h2>
           <div class="content has-text-justified">
             <p>
-              We introduce a new benchmark, <b>ChartMimic</b>, aimed at assessing <b>the visually-grounded code
-                generation
-                capabilities of large multimodal models (LMMs)</b>. ChartMimic utilizes information-intensive visual
-              charts
-              and textual instructions as inputs, requiring LMMs to generate the corresponding code for chart rendering.
-            </p>
-            <p>
-              ChartMimic includes <b>1,000 human-curated (figure, instruction, code) triplets</b>, which represent the
-              authentic chart use cases found in scientific papers across various domains (e.g., Physics, Computer
-              Science, Economics, etc). These charts span 18 regular types and 4 advanced types, diversifying into 191
-              subcategories.
-            </p>
-            <p>
-              Furthermore, we propose <b>multi-level evaluation metrics</b> to provide an automatic and thorough
-              assessment of
-              the output code and the rendered charts. Unlike existing code generation benchmarks, ChartMimic places
-              emphasis on evaluating LMMs' capacity to harmonize a blend of cognitive capabilities, encompassing
-              <b>visual
-                understanding, code generation, and cross-modal reasoning</b>.
-            </p>
-            <p>
-              The evaluation of 3 proprietary models and 11 open-weight models highlights the substantial challenges
-              posed by ChartMimic. Even the advanced GPT-4V, Claude-3-opus only achieve an average score of 73.2 and
-              53.7, respectively, indicating significant room for improvement.
-              We anticipate that ChartMimic will inspire the development of LMMs, advancing the pursuit of artificial
-              general intelligence.
+              We introduce <b>PhyX</b>: the first large-scale benchmark designed to assess 
+              models capacity for physics-grounded reasoning in visual scenarios. 
+              PhyX includes <b>3K</b> meticulously curated multimodal questions spanning <b>6 reasoning types</b>
+               across <b>25 sub-domains</b> and <b>6 core physics domains</b>: thermodynamics, electromagnetism,
+               mechanics, modern physics, optics, and wave\&acoustics. 
+               In our comprehensive evaluation, even state-of-the-art models struggle significantly with physical reasoning.
+                <b>GPT-4o, Claude3.7-Sonnet, and GPT-o4-mini achieve only 32.5\%, 42.2\%, and 45.8\% </b>
+                accuracy respectively-performance gaps exceeding 29\% compared to human experts.
             </p>
           </div>
         </div>
       </div>
       <!--/ Abstract. -->
 
-      <!--/ Framework. -->
-      <div class="hero-body">
-        <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video> -->
-        <img src="./static/images/framework.png" alt="Framework." />
-        <h2 class="subtitle has-text-centered">
-          <!-- <span class="dnerf">Nerfies</span> -->
-          The pipeline of ChartMimic. We provide 1,000 human-curated (figure, instruction, code) triplets. We use
-          ChartMimic to evaluate LMMs’ proficiency in the multimodal chart-to-code generation, resulting in both
-          high-level and low-level evaluation results.
-        </h2>
-      </div>
-      <!--/ Framework. -->
     </div>
   </section>
 
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
+  <!-- DATASET SECTION -->
+  <section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+      <h1 class="title is-1 mmmu">
+        <img src="static/images/PhyX_Logo.png" alt="Logo" class="mmmu-logo"/>
+        <span class="mmmu">PhyX Benchmark</span>
+      </h1>
+    </div>
+  </section>
 
-
-
-        <h2 class="title is-3">Leaderboard</h2>
-        We conduct examination of 14 LMMs on ChartMimic, including 3 proprietary models and 11 open-weight
-        models.
-
-        <br>
-        <br>
-
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="main-results-tab" data-bs-toggle="tab"
-              data-bs-target="#benchmark-table-content" type="button" role="tab" aria-controls="main-results-tab"
-              aria-selected="true">Direct Mimic</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="eurus-code-table-tab" data-bs-toggle="tab"
-              data-bs-target="#eurus-code-table-content" type="button" role="tab" aria-controls="eurus-code-table-tab"
-              aria-selected="false">Customized Mimic</button>
-          </li>
-          <!-- <li class="nav-item" role="presentation">
-            <button class="nav-link" id="eurus-math-table-tab" data-bs-toggle="tab"
-              data-bs-target="#eurus-math-table-content" type="button" role="tab" aria-controls="eurus-math-table-tab"
-              aria-selected="false">
-              Math (Eurus subset)</button>
-          </li> -->
-        </ul>
-
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="benchmark-table-content" role="tabpanel"
-            aria-labelledby="benchmark-table-content">
-
-            <p class="mt-2 px-2">
-              The ChartMimic leaderboard with <b>Direct Mimic</b> task. We also include
-              the
-              code
-              execution success rate (Exec. Rate) and model size (Params).
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Comparisons with Existing Benchmarks</h2>
+          <div class="content has-text-justified">
+            <p>
+              To further distinguish the difference between <i>PhyX</i> and other existing ones, we elaborate the benchmark details in Figure.
+              From the <i>realistic</i> perspective, the prior benchmarks are heavily focused on abstract lining.
+              In contrast, our benchmark are realistic and delete text redundancy.
             </p>
-
-            <div id="benchmark-table"></div>
+            <div class="content has-text-centered">
+              <img src="static/images/comparison.png" alt="comparison with existing benchmarks" class="center">
+              <img src="static/images/comparison_with_physics.png" alt="comparison with existing benchmarks" class="center">
+              <p> Comparison with existing physics benchmarks.</p>
+            </div>
           </div>
-          <div class="tab-pane fade" id="eurus-code-table-content" role="tabpanel"
-            aria-labelledby="eurus-code-table-content">
-
-            <p class="mt-2 px-2">
-              The ChartMimic leaderboard with <b>Customized Mimic</b> task. We also include
-              the
-              code execution success rate (Exec. Rate) and model size (Params).
-            </p>
-
-
-            <div id="eurus-code-table"></div>
-          </div>
-          <!-- <div class="tab-pane fade" id="eurus-math-table-content" role="tabpanel"
-            aria-labelledby="eurus-math-table-content">
-            <p class="mt-2 px-2">
-              This math subset follows the <a href="https://arxiv.org/abs/2404.02078">Eurus
-                paper</a> and contains TheoremQA, MATH and MMLU.
-            </p>
-
-
-            <div id="eurus-math-table"></div>
-          </div> -->
         </div>
-        <br>
-        <h2 class="subtitle">
-          Please refer to our <a href="https://github.com/ChartMimic/ChartMimic">GitHub repo</a> to add your
-          model to the leaderboard.
-        </h2>
+      </div>
+
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+          <h2 class="title is-3">Statistics</h2>
+          <div class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/overview.png" alt="sampled PhyX" width="95%"/>
+                <p> Sampled PhyX examples from each discipline.</p>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/statistics.png" alt="Key statistics" width="40%"/>
+                <p> Key statistics of the MMMU benchmark</p>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/data_distribution.png" alt="Distribution of question domains" width="80%"/>
+                <p> Distribution of question domains in the PhyX dataset</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -389,16 +334,24 @@
   <section class="section" id="Data">
     <div class="container is-max-desktop content">
       <h2 class="title">Data</h2>
-      <p>You can directly download our data from <a href="https://github.com/ChartMimic/ChartMimic">Huggingface
+      <p>You can directly download our data from <a href="https://huggingface.co/datasets/Cloudriver/PhyX">Huggingface
           datasets</a>. For guidance on how to access and utilize the data, please consult our instructions on <a
-          href="https://huggingface.co/datasets/ChartMimic/ChartMimic">Github</a>.</p>
+          href="https://github.com/NastyMarcus/PhyX">Github</a>.</p>
     </div>
   </section>
 
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>To be anounced</code>
+      <pre><code>@misc{shen2025phyxdoesmodelwits,
+        title={PhyX: Does Your Model Have the "Wits" for Physical Reasoning?}, 
+        author={Hui Shen and Taiqiang Wu and Qi Han and Yunta Hsieh and Jizhou Wang and Yuyue Zhang and Yuxin Cheng and Zijian Hao and Yuansheng Ni and Xin Wang and Zhongwei Wan and Kai Zhang and Wendong Xu and Jing Xiong and Ping Luo and Wenhu Chen and Chaofan Tao and Zhuoqing Mao and Ngai Wong},
+        year={2025},
+        eprint={2505.15929},
+        archivePrefix={arXiv},
+        primaryClass={cs.AI},
+        url={https://arxiv.org/abs/2505.15929}, 
+  }</code>
   </pre>
     </div>
   </section>
