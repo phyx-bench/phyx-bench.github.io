@@ -236,12 +236,14 @@
   </section>
 
   <section class="hero teaser">
-    <div class="container is-max-desktop has-text-centered">
-      <img src="./static/images/overview.png" alt="Dataset overview." />
-      <p>
-        <!-- <span class="dnerf">Nerfies</span> -->
-        Data examples of the PhyX dataset. The dataset contains 3,000 human-annotated physics problems with visual context.
-      </p>
+    <div class="container">
+      <div class="is-max-desktop has-text-centered">
+        <img src="./static/images/overview.png" alt="Dataset overview." />
+        <p>
+          <!-- <span class="dnerf">Nerfies</span> -->
+          Data examples of the PhyX dataset. The dataset contains 3,000 human-annotated physics problems with visual context.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -253,7 +255,7 @@
           <h2 class="title is-3">🔔News</h2>
           <div class="content has-text-justified">
             <p>
-              <b>🔥[2025-05-27]: PhyX is officially supported by <a href="https://github.com/open-compass/VLMEvalKit">VLMEvalKit</a> for easy evalution! 🎉</b>
+              <b>🔥 [2025-05-27]: PhyX is officially supported by <a href="https://github.com/open-compass/VLMEvalKit">VLMEvalKit</a> for easy evalution! 🎉</b>
             </p>
             <p>
               <b>🚀 [2025-05-23]: The <a href="https://arxiv.org/abs/2505.15929">arXiv paper</a> is online! 🚀</b>
@@ -348,17 +350,20 @@
     </div>
   </section>
 
-  <section class="section" id="Data">
-    <div class="container is-max-desktop content has-text-centered">
-      <h2 class="title is-3" id="leaderboard">Data</h2>
-      <p>You can directly download our data from <a href="https://huggingface.co/datasets/Cloudriver/PhyX">Huggingface
-          datasets</a>. For guidance on how to access and utilize the data, please consult our instructions on <a
-          href="https://github.com/NastyMarcus/PhyX">Github</a>.</p>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
+
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+          <h2 class="title is-3" id="leaderboard">Data</h2>
+          <div class="content has-text-justified">
+            <p>You can directly download our data from <a href="https://huggingface.co/datasets/Cloudriver/PhyX">Huggingface
+              datasets</a>. For guidance on how to access and utilize the data, please consult our instructions on <a
+              href="https://github.com/NastyMarcus/PhyX">Github</a>.</p>
+          </div>
+        </div>
+      </div>
+      
       <!-------------------------------------------------------------------- LEADERBOARD SECTION -------------------------------------------------------------------->
       <div class="columns is-centered m-6">
         <div class="column is-full has-text-centered content">
@@ -417,6 +422,192 @@
                 </tbody>
               </table>
               <p class="test-desc"> Overall results of different models on the PhyX leaderboard. The best-performing model in each category is <b>in-bold</b>, and the second best is <u>underlined</u>. *: results provided by the authors.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-------------------------------------------------------------------- Error Analysis SECTION -------------------------------------------------------------------->
+        <div class="columns is-centered m-6">
+          <div class="column is-full has-text-centered content">
+            <h2 class="title is-3">Error Analysis</h2>
+            <div class="content has-text-justified">
+              <p>
+                To dive into the reasoning capabilities and limitations of models, we meticulously inspected 96
+                randomly sampled incorrect predictions and performed an in-depth analysis based on GPT-4o. The
+                objectives of this analysis were twofold: to identify current model weaknesses and to guide future
+                enhancements in model design and training. A comprehensive case study of 30 notable cases is included in our paper, Appendix E.
+              </p>
+            </div>
+            <div class="content has-text-centered">
+              <img src="static/images/error_distribution.png" alt="error distribution" width="25%">
+              <p> Error distribution over 96 annotated GPT-4o errors.</p>
+            </div>
+          </div>
+        </div>
+
+      <!-------------------------------------------------------------------- Error Example  -------------------------------------------------------------------->
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+          <h2 class="title is-3" id="examples">Error Examples</h2>
+          <div class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/1.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/2.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/3.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/4.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/5.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/6.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/7.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/8.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/9.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/10.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/11.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/12.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/13.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <!-- <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/14.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div> -->
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/15.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/16.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/17.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/error/18.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-------------------------------------------------------------------- Correct Example -------------------------------------------------------------------->
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+          <h2 class="title is-3">Correct Examples</h2>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/1.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/2.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/3.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/4.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/5.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/6.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/7.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/8.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/9.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/10.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/11.png" alt="grade-lv" width="60%"/>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/correct/12.png" alt="grade-lv" width="60%"/>
+              </div>
             </div>
           </div>
         </div>
