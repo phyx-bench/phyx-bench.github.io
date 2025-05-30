@@ -115,13 +115,32 @@ function toggleDetails(section) {
     var detailCells = document.querySelectorAll('.' + sec + '-details');
     var overallCells = document.querySelectorAll('.' + sec + '-overall');
     var headerCell = document.querySelector('.' + sec + '-details-cell');
+    var icon = headerCell.querySelector('.expand-icon'); // 获取箭头图标元素
+
     if (sec === section) {
       detailCells.forEach(cell => cell.classList.toggle('hidden'));
       headerCell.setAttribute('colspan', headerCell.getAttribute('colspan') === '1' ? (sec === 'test' ? '7' : '3') : '1');
+
+      // 切换 is-expanded 类
+      headerCell.classList.toggle('is-expanded');
+
+      // 根据是否展开来切换箭头字符
+      if (headerCell.classList.contains('is-expanded')) {
+        if (icon) icon.textContent = '▼'; // 展开时显示下箭头
+      } else {
+        if (icon) icon.textContent = '►'; // 收起时显示右箭头
+      }
+
     } else {
       detailCells.forEach(cell => cell.classList.add('hidden'));
       overallCells.forEach(cell => cell.classList.remove('hidden'));
       headerCell.setAttribute('colspan', '1');
+
+      // 其他未展开的表头移除 is-expanded 类
+      headerCell.classList.remove('is-expanded');
+
+      // 确保其他表头的箭头向右
+      if (icon) icon.textContent = '►';
     }
   });
 
@@ -141,8 +160,19 @@ function resetTable() {
   document.querySelector('.val-details-cell').setAttribute('colspan', '1');
   document.querySelector('.test-details-cell').setAttribute('colspan', '1');
 
-  var valOverallHeader = document.querySelector('#mmmu-table thead tr:last-child th.val-overall');
-  sortTable(valOverallHeader, true);
+  // 移除 is-expanded 类
+  document.querySelector('.pro-details-cell').classList.remove('is-expanded');
+  document.querySelector('.val-details-cell').classList.remove('is-expanded');
+  document.querySelector('.test-details-cell').classList.remove('is-expanded');
+
+  // 确保重置时所有箭头向右
+  document.querySelectorAll('.expand-icon').forEach(function(icon) {
+    icon.textContent = '►';
+  });
+
+
+  var proOverallHeader = document.querySelector('#mmmu-table thead tr:last-child th.pro-overall');
+  sortTable(proOverallHeader, true);
 
   setTimeout(adjustNameColumnWidth, 0);
 }
@@ -205,8 +235,37 @@ function getCellValue(row, index) {
 }
 
 function initializeSorting() {
-  var valOverallHeader = document.querySelector('#mmmu-table thead tr:last-child th.val-overall');
-  sortTable(valOverallHeader, true);
+  // 将所有可点击的详细信息表头设置为默认的收起状态 (右箭头，无展开背景)
+  document.querySelectorAll('.pro-details-cell, .val-details-cell, .test-details-cell').forEach(function(headerCell) {
+    var icon = headerCell.querySelector('.expand-icon');
+    if (icon) {
+      icon.textContent = '►'; // 设置箭头向右
+    }
+    headerCell.classList.remove('is-expanded'); // 移除展开类
+    // 确保详细列是隐藏的
+    var detailCells = document.querySelectorAll('.' + headerCell.classList[0].replace('-details-cell', '-details'));
+    detailCells.forEach(cell => cell.classList.add('hidden'));
+    // 确保总体列是显示的
+    var overallCells = document.querySelectorAll('.' + headerCell.classList[0].replace('-details-cell', '-overall'));
+    overallCells.forEach(cell => cell.classList.remove('hidden'));
+    // 重置colspan
+    headerCell.setAttribute('colspan', '1');
+  });
+
+  // 找到默认排序列的表头 (PhyX(OE) 下的 Text-DeRedundancy)
+  var proOverallHeader = document.querySelector('#mmmu-table thead tr:last-child th.pro-overall');
+
+  // 触发初始排序 (按 PhyX(OE) 降序)
+  // 注意: sortTable 函数的第二个参数 true 表示降序
+  if (proOverallHeader) {
+     sortTable(proOverallHeader, true);
+  } else {
+     // 如果找不到默认排序列，可以考虑对 Name 列进行排序作为后备
+     var nameHeader = document.querySelector('#mmmu-table thead tr:last-child th[data-sort="string"]');
+     if(nameHeader) sortTable(nameHeader, false); // Name 列通常按升序
+  }
+
+  // 注意：这里不再设置某个表头为展开状态，保持所有详细信息表头初始为收起状态。
 }
 
 function adjustNameColumnWidth() {

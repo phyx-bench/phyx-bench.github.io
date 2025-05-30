@@ -427,3 +427,46 @@ td:hover {
     min-width: 100px;
   }
 }
+
+.pro-details-cell, .val-details-cell, .test-details-cell {
+  background: #e6f7ff !important;
+  color: #1890ff !important;
+  font-weight: bold;
+  border: 2px solid #91d5ff !important;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.pro-details-cell:hover, .val-details-cell:hover, .test-details-cell:hover {
+  background: #bae7ff !important;
+  box-shadow: 0 2px 8px #91d5ff55;
+}
+
+.expand-icon {
+  font-size: 0.9em;
+  margin-left: 6px;
+  vertical-align: middle;
+  color: #1890ff;
+}
+
+.is-expanded {
+  background: #cce0ff !important;
+  border-color: #66b3ff !important;
+}
+
+.is-expanded .expand-icon {
+}
+
+.test-desc {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+@media screen and (max-width: 768px) {
+  #mmmu-table th,
+  #mmmu-table td {
+    min-width: 100px;
+  }
+}
