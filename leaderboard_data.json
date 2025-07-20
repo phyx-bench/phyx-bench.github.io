@@ -555,6 +555,34 @@
         "humanSocialSci": "33.7",
         "techEng": "32.7"
       }
+    },
+    {
+      "info": {
+        "name": "skywork-R1V3",
+        "size": "38B",
+        "date": "2025-07-08",
+        "type": "open_source",
+        "link": "https://github.com/SkyworkAI/Skywork-R1V"
+      },
+      "pro": {
+        "overall": "-",
+        "vision": "-",
+        "original": "-"
+      },
+      "validation": {
+        "overall": "-",
+        "artDesign": "-",
+        "business": "52.8"
+      },
+      "test": {
+        "overall": "-",
+        "artDesign": "-",
+        "business": "-",
+        "science": "-",
+        "healthMedicine": "-",
+        "humanSocialSci": "-",
+        "techEng": "-"
+      }
     }
   ]
 } 
